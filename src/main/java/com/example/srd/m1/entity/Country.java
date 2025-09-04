@@ -1,9 +1,9 @@
 /**
- * Introduction to Spring JDBC support
+ * Introduction to Spring - Relational DB
  * 
- * https://github.com/egalli64/swd/
+ * https://github.com/egalli64/spring-rdb
  */
-package com.example.swd.m1.entity;
+package com.example.srd.m1.entity;
 
 /**
  * Entity for Spring JDBC API
