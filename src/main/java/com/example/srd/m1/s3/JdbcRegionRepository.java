@@ -1,15 +1,15 @@
 /**
- * Introduction to Spring JDBC support
+ * Introduction to Spring - Relational DB
  * 
- * https://github.com/egalli64/swd/
+ * https://github.com/egalli64/spring-rdb
  */
-package com.example.swd.m1.s3;
+package com.example.srd.m1.s3;
 
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.swd.m1.entity.Region;
+import com.example.srd.m1.entity.Region;
 
 /**
  * A Spring JDBC API Repository
