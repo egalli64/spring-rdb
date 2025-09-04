@@ -31,7 +31,7 @@ public class JdbcClientRegionRepository {
      * @return the found region
      * @throws DataAccessException due to single()
      */
-    public Region findById(Integer id) {
+    public Region findById(Long id) {
         return jdbc.sql("SELECT region_id as id, name FROM Region WHERE region_id = :id") //
                 .param("id", id) //
                 .query(Region.class) //
@@ -53,7 +53,7 @@ public class JdbcClientRegionRepository {
                 .update(keyHolder);
 
         if (keyHolder.getKey() != null) {
-            region.setId(keyHolder.getKey().intValue());
+            region.setId(keyHolder.getKey().longValue());
         }
         return region;
     }

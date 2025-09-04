@@ -9,13 +9,13 @@ package com.example.srd.m1.entity;
  * Entity for Spring JDBC API
  */
 public class Region {
-    private Integer id;
+    private Long id;
     private String name;
 
     public Region() {
     }
 
-    public Region(Integer id, String name) {
+    public Region(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -24,11 +24,11 @@ public class Region {
         this(null, name);
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

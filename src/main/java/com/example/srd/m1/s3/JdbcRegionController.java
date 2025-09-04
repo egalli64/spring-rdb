@@ -43,7 +43,7 @@ public class JdbcRegionController {
     }
 
     @PostMapping("/update")
-    public String update(@RequestParam Integer id, @RequestParam String name, Model model) {
+    public String update(@RequestParam Long id, @RequestParam String name, Model model) {
         log.traceEntry("update({}, {})", id, name);
 
         try {

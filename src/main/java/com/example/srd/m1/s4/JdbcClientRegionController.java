@@ -29,7 +29,7 @@ public class JdbcClientRegionController {
     }
 
     @GetMapping("/read")
-    public String read(@RequestParam Integer id, Model model) {
+    public String read(@RequestParam Long id, Model model) {
         log.traceEntry("read({})", id);
 
         try {
@@ -61,7 +61,7 @@ public class JdbcClientRegionController {
     }
 
     @PostMapping("/update")
-    public String update(@RequestParam Integer id, @RequestParam String name, Model model) {
+    public String update(@RequestParam Long id, @RequestParam String name, Model model) {
         log.traceEntry("update({}, {})", id, name);
 
         Region region = new Region(id, name);
