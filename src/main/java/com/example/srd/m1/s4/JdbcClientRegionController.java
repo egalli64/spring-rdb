@@ -1,9 +1,9 @@
 /**
- * Introduction to Spring JDBC support
+ * Introduction to Spring - Relational DB
  * 
- * https://github.com/egalli64/swd/
+ * https://github.com/egalli64/spring-rdb
  */
-package com.example.swd.m1.s4;
+package com.example.srd.m1.s4;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,12 +11,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.swd.m1.entity.Region;
+import com.example.srd.m1.entity.Region;
 
 @Controller
 @RequestMapping("/m1/s4")
@@ -29,8 +28,8 @@ public class JdbcClientRegionController {
         this.repo = repo;
     }
 
-    @GetMapping("/read/{id}")
-    public String read(@PathVariable Integer id, Model model) {
+    @GetMapping("/read")
+    public String read(@RequestParam Integer id, Model model) {
         log.traceEntry("read({})", id);
 
         try {
