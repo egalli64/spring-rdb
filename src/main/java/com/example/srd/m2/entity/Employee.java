@@ -1,5 +1,11 @@
-package com.example.swd.m2.entity;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m2.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -14,28 +20,28 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EMPLOYEE_ID")
-    private Integer id;
+    private Long id;
 
     private String firstName;
     private String lastName;
-
     private LocalDate hired;
-    private double salary;
+
+    @Column(name = "salary", precision = 8, scale = 2)
+    private BigDecimal salary;
 
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, double salary) {
+    public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.salary = salary;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,11 +76,11 @@ public class Employee {
         }
     }
 
-    public double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 

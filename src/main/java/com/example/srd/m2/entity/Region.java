@@ -1,4 +1,9 @@
-package com.example.swd.m2.entity;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m2.entity;
 
 import java.util.List;
 
@@ -16,7 +21,7 @@ public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "region_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name", length = 25)
     private String name;
@@ -31,11 +36,11 @@ public class Region {
         this.name = name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,4 +1,9 @@
-package com.example.swd.m2.entity;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m2.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -53,5 +58,10 @@ public class Country {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    @Override
+    public String toString() {
+        return "Country [id=" + id + ", name=" + name + ", region=" + region + "]";
     }
 }
