@@ -1,4 +1,9 @@
-package com.example.swd.m2.s4;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m2.s4;
 
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.swd.m2.entity.Region;
+import com.example.srd.m2.entity.Region;
 
 @Controller
 @RequestMapping("/m2/s4")
@@ -42,7 +47,7 @@ public class CrudRegionController {
     }
 
     @PostMapping("/rename")
-    public String rename(@RequestParam Integer id, @RequestParam String name, Model model) {
+    public String rename(@RequestParam Long id, @RequestParam String name, Model model) {
         log.traceEntry("rename");
 
         repo.findById(id).ifPresentOrElse(entity -> {
@@ -55,7 +60,7 @@ public class CrudRegionController {
     }
 
     @GetMapping("/check")
-    public String exists(@RequestParam Integer id, Model model) {
+    public String exists(@RequestParam Long id, Model model) {
         log.traceEntry("exists({})", id);
 
         model.addAttribute("message", String.format("Entity %d %sfound", id, repo.existsById(id) ? "" : "NOT "));
@@ -73,7 +78,7 @@ public class CrudRegionController {
     }
 
     @GetMapping("/some")
-    public String some(@RequestParam List<Integer> ids, Model model) {
+    public String some(@RequestParam List<Long> ids, Model model) {
         log.traceEntry("some");
 
         model.addAttribute("message", "Found: " + repo.findAllById(ids));
@@ -90,8 +95,8 @@ public class CrudRegionController {
         return "/m2/s4/result";
     }
 
-    @GetMapping("/deleteById")
-    public String deleteById(@RequestParam Integer id, Model model) {
+    @GetMapping("/delete")
+    public String delete(@RequestParam Long id, Model model) {
         log.traceEntry("deleteById({})", id);
 
         try {
@@ -104,8 +109,8 @@ public class CrudRegionController {
         return "/m2/s4/result";
     }
 
-    @GetMapping("/findDelete")
-    public String findDelete(@RequestParam Integer id, Model model) {
+    @GetMapping("/find-delete")
+    public String findDelete(@RequestParam Long id, Model model) {
         log.traceEntry("findDelete({})", id);
 
         Optional<Region> opt = repo.findById(id);
@@ -125,8 +130,8 @@ public class CrudRegionController {
         return "/m2/s4/result";
     }
 
-    @GetMapping("/deleteSome")
-    public String deleteSome(@RequestParam List<Integer> ids, Model model) {
+    @GetMapping("/delete-some")
+    public String deleteSome(@RequestParam List<Long> ids, Model model) {
         log.traceEntry("deleteSome({})", ids);
 
         List<Region> regions = ids.stream() //
@@ -145,7 +150,7 @@ public class CrudRegionController {
         return "/m2/s4/result";
     }
 
-    @GetMapping("/deleteAll")
+    @GetMapping("/delete-all")
     public String deleteAll(Model model) {
         log.traceEntry("deleteAll");
 
