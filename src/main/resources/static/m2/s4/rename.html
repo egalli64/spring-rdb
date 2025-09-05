@@ -1,16 +1,22 @@
+<!--
+    Introduction to Spring - Relational DB
+
+    https://github.com/egalli64/spring-rdb
+ -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Delete a region (JPA)</title>
+<title>Rename a region (JPA)</title>
 <link rel="icon" href="data:;base64,=">
 <link rel="stylesheet" type="text/css" href="/css/simple.css">
 </head>
 <body>
-    <h1>Delete a region (JPA)</h1>
+    <h1>Rename a region (JPA)</h1>
 
-    <form action="deleteById">
+    <form action="rename" method="post">
         <label>Region id: <input name="id" autofocus></label>
+        <label>New region name: <input name="name"></label>
         <button>OK</button>
     </form>
 </body>
