@@ -1,0 +1,19 @@
+<!--
+    Introduction to Spring - Relational DB
+
+    https://github.com/egalli64/spring-rdb
+ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Repository feedback</title>
+<link rel="icon" href="data:;base64,=">
+<link rel="stylesheet" type="text/css" th:href="@{/css/simple.css}">
+</head>
+<body>
+    <h1>Repository feedback</h1>
+    <p th:text="${message}">A message from the controller</p>
+
+    <div th:replace="~{fragments :: myNav}"></div>
+</body>
+</html>
