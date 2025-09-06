@@ -1,0 +1,24 @@
+<!--
+    Introduction to Spring - Relational DB
+
+    https://github.com/egalli64/spring-rdb
+ -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Controller error</title>
+<meta charset="UTF-8">
+<link rel="icon" href="data:;base64,=">
+<link rel="stylesheet" type="text/css" th:href="@{/css/simple.css}">
+</head>
+<body>
+    <h1>Controller error</h1>
+
+    <p th:text="${error}">An error message from the controller</p>
+    <p>
+        Caused by <span th:text="${name}"></span>
+    </p>
+
+    <div th:replace="~{fragments :: myNav}"></div>
+</body>
+</html>
