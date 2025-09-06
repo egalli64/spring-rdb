@@ -1,20 +1,28 @@
-package com.example.swd.m3.s2;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m3.s2;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.swd.m2.entity.Region;
+import com.example.srd.m2.entity.Region;
 
 @RestController
-public class RegionController {
-    private final RegionRepository regionRepository;
+public class RegionRestController {
+    private static final Logger log = LogManager.getLogger(RegionRestController.class);
+    private final RegionRepository repo;
 
-    public RegionController(RegionRepository regionRepository) {
-        this.regionRepository = regionRepository;
+    public RegionRestController(RegionRepository repo) {
+        this.repo = repo;
     }
 
     /**
@@ -28,7 +36,8 @@ public class RegionController {
      */
     @GetMapping("/regions")
     public List<Region> getAllRegions() {
-        return regionRepository.findAll();
+        log.traceEntry("getAllRegions()");
+        return repo.findAll();
     }
 
     /**
@@ -43,6 +52,7 @@ public class RegionController {
      */
     @PostMapping("/regions")
     public Region createRegion(@RequestBody Region region) {
-        return regionRepository.save(region);
+        log.traceEntry("createRegion()");
+        return repo.save(region);
     }
 }
