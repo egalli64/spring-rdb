@@ -1,25 +1,30 @@
-package com.example.swd.m3.s3;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m3.s3;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.swd.m2.entity.Country;
-import com.example.swd.m2.entity.Region;
+import com.example.srd.m2.entity.Country;
+import com.example.srd.m2.entity.Region;
 
 @RestController
-@RequestMapping("/regions")
-public class CustomRegionController {
-
+public class CustomRegionRestController {
+    private static final Logger log = LogManager.getLogger(CustomRegionRestController.class);
     private final CustomRegionRepository repo;
 
-    public CustomRegionController(CustomRegionRepository repo) {
+    public CustomRegionRestController(CustomRegionRepository repo) {
         this.repo = repo;
     }
 
@@ -32,6 +37,7 @@ public class CustomRegionController {
      */
     @GetMapping("/with-countries")
     public List<Region> getRegionsWithCountries() {
+        log.traceEntry("getRegionsWithCountries()");
         return repo.findRegionsWithCountryCount();
     }
 
@@ -43,8 +49,10 @@ public class CustomRegionController {
      * </pre>
      */
     @PostMapping("/{regionId}/countries")
-    public ResponseEntity<String> addCountriesToRegion( //
-            @PathVariable Integer regionId, @RequestBody List<Country> countries) {
+    public ResponseEntity<String> addCountriesToRegion(@PathVariable Long regionId,
+            @RequestBody List<Country> countries) {
+        log.traceEntry("addCountriesToRegion()");
+
         try {
             repo.addCountriesToExistingRegion(regionId, countries);
             return ResponseEntity.ok("Countries successfully added to region " + regionId);
