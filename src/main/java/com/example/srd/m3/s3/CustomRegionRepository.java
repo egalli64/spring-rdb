@@ -1,12 +1,17 @@
-package com.example.swd.m3.s3;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m3.s3;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.swd.m2.entity.Country;
-import com.example.swd.m2.entity.Region;
+import com.example.srd.m2.entity.Country;
+import com.example.srd.m2.entity.Region;
 
 import jakarta.persistence.EntityManager;
 
@@ -42,7 +47,7 @@ public class CustomRegionRepository {
      * <p>
      * Single transaction, ACID behavior. In case of failure, full roll back
      */
-    public void addCountriesToExistingRegion(Integer regionId, List<Country> countries) {
+    public void addCountriesToExistingRegion(Long regionId, List<Country> countries) {
         // Find the region within the transaction
         Region region = entityManager.find(Region.class, regionId);
         if (region == null) {
