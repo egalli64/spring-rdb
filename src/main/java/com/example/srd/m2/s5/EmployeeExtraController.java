@@ -33,7 +33,7 @@ public class EmployeeExtraController {
         Iterable<Employee> entities = repo.findByFirstName(name);
         model.addAttribute("message", "Found: " + entities);
 
-        return "/m2/s5/result";
+        return "/result";
     }
 
     @GetMapping("/firstname-starting")
@@ -43,7 +43,7 @@ public class EmployeeExtraController {
         Iterable<Employee> entities = repo.findByFirstNameStartingWith(prefix);
         model.addAttribute("message", "Found: " + entities);
 
-        return "/m2/s5/result";
+        return "/result";
     }
 
     @GetMapping("/firstname-starting-lastname-containing")
@@ -54,6 +54,6 @@ public class EmployeeExtraController {
         Iterable<Employee> entities = repo.findByFirstNameStartingWithOrLastNameContainingIgnoreCase(first, last);
         model.addAttribute("message", "Found: " + entities);
 
-        return "/m2/s5/result";
+        return "/result";
     }
 }
