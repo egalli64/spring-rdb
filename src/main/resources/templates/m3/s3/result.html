@@ -18,7 +18,7 @@
         <div th:each="region : ${regions}">
             <h3 th:text="${region.name}">Region Name</h3>
             <ul>
-                <li th:each="country : ${region.countries}" th:text="${country.id} + ': ' + ${country.name}">Country Name</li>
+                <li th:each="country : ${region.countries}" th:text="${country.id} + ': ' + ${country.name}">Info</li>
             </ul>
         </div>
     </div>
@@ -26,14 +26,13 @@
     <div th:if="${region}">
         <h3 th:text="${region.name}">Region Name</h3>
         <ul>
-            <li th:each="country : ${region.countries}" th:text="${country.id} + ': ' + ${country.name}">Country Name</li>
+            <li th:each="country : ${region.countries}" th:text="${country.id} + ': ' + ${country.name}">Info</li>
         </ul>
     </div>
 
     <div th:if="${message}">
         <h3 th:text="${message}">A controller message</h3>
     </div>
-
 
     <div th:replace="~{fragments :: myNav}"></div>
 </body>
