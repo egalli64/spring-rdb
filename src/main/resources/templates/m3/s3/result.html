@@ -1,0 +1,40 @@
+<!--
+    Introduction to Spring - Relational DB
+
+    https://github.com/egalli64/spring-rdb
+ -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Region and Countries</title>
+<link rel="icon" href="data:;base64,=">
+<link rel="stylesheet" type="text/css" th:href="@{/css/simple.css}">
+</head>
+<body>
+    <h1>Region and Countries</h1>
+
+    <div th:if="${regions}">
+        <div th:each="region : ${regions}">
+            <h3 th:text="${region.name}">Region Name</h3>
+            <ul>
+                <li th:each="country : ${region.countries}" th:text="${country.id} + ': ' + ${country.name}">Country Name</li>
+            </ul>
+        </div>
+    </div>
+
+    <div th:if="${region}">
+        <h3 th:text="${region.name}">Region Name</h3>
+        <ul>
+            <li th:each="country : ${region.countries}" th:text="${country.id} + ': ' + ${country.name}">Country Name</li>
+        </ul>
+    </div>
+
+    <div th:if="${message}">
+        <h3 th:text="${message}">A controller message</h3>
+    </div>
+
+
+    <div th:replace="~{fragments :: myNav}"></div>
+</body>
+</html>
