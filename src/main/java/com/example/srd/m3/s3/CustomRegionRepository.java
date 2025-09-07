@@ -6,6 +6,7 @@
 package com.example.srd.m3.s3;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,13 +24,13 @@ import jakarta.persistence.EntityManager;
 @Transactional
 public class CustomRegionRepository {
     /** Spring takes care of using the entity manager in a thread safe way */
-    private final EntityManager entityManager;
+    private final EntityManager em;
 
     /**
-     * Injecting by constructor, preferred over using the @Autowired on the field
+     * Injecting by constructor, preferred over @PersistenceContext on the field
      */
-    public CustomRegionRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public CustomRegionRepository(EntityManager em) {
+        this.em = em;
     }
 
     /**
@@ -37,9 +38,18 @@ public class CustomRegionRepository {
      * transaction should be used
      */
     @Transactional(readOnly = true)
-    public List<Region> findRegionsWithCountryCount() {
-        return entityManager.createQuery("SELECT r FROM Region r LEFT JOIN FETCH r.countries", Region.class)
-                .getResultList();
+    public List<Region> findRegionsWithCountries() {
+        return em.createQuery("SELECT DISTINCT r FROM Region r LEFT JOIN FETCH r.countries ORDER BY r.name",
+                Region.class).getResultList();
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Region> findByIdWithCountries(Long id) {
+        Region region = em
+                .createQuery("SELECT DISTINCT r FROM Region r LEFT JOIN FETCH r.countries WHERE r.id = :id", Region.class)
+                .setParameter("id", id).getResultStream().findFirst().orElse(null);
+
+        return Optional.ofNullable(region);
     }
 
     /**
@@ -49,14 +59,14 @@ public class CustomRegionRepository {
      */
     public void addCountriesToExistingRegion(Long regionId, List<Country> countries) {
         // Find the region within the transaction
-        Region region = entityManager.find(Region.class, regionId);
+        Region region = em.find(Region.class, regionId);
         if (region == null) {
             throw new RuntimeException("Region not found with id: " + regionId);
         }
 
         for (Country country : countries) {
             country.setRegion(region);
-            entityManager.persist(country);
+            em.persist(country);
         }
     }
 }
