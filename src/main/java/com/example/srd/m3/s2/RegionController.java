@@ -51,7 +51,7 @@ public class RegionController {
         log.traceEntry("createRegion({})", name);
 
         try {
-            Region entity = repo.save(null);
+            Region entity = repo.save(new Region(name));
             return "redirect:/m3/s2/get-region?id=" + entity.getId();
         } catch (Exception ex) {
             log.info("Can't get {}", name);
