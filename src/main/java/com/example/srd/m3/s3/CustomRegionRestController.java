@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.srd.m2.entity.Country;
 import com.example.srd.m2.entity.Region;
 
 @RestController
+@RequestMapping("/regions")
 public class CustomRegionRestController {
     private static final Logger log = LogManager.getLogger(CustomRegionRestController.class);
     private final CustomRegionRepository repo;
@@ -38,7 +40,7 @@ public class CustomRegionRestController {
     @GetMapping("/with-countries")
     public List<Region> getRegionsWithCountries() {
         log.traceEntry("getRegionsWithCountries()");
-        return repo.findRegionsWithCountryCount();
+        return repo.findRegionsWithCountries();
     }
 
     /**
@@ -51,7 +53,7 @@ public class CustomRegionRestController {
     @PostMapping("/{regionId}/countries")
     public ResponseEntity<String> addCountriesToRegion(@PathVariable Long regionId,
             @RequestBody List<Country> countries) {
-        log.traceEntry("addCountriesToRegion()");
+        log.traceEntry("addCountriesToRegion({})", regionId);
 
         try {
             repo.addCountriesToExistingRegion(regionId, countries);
