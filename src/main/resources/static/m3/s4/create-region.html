@@ -1,0 +1,32 @@
+<!--
+    Introduction to Spring - Relational DB
+
+    https://github.com/egalli64/spring-rdb
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Create region</title>
+<link rel="icon" href="data:;base64,=">
+<link rel="stylesheet" type="text/css" href="/css/simple.css">
+</head>
+<body>
+    <h1>Create a region and associated countries</h1>
+
+    <form action="create-region" method="post">
+        <label>Region: <input name="name" placeholder="name" value="A region" required></label>
+        <div>
+            <label>Country 1: <input name="ids" value="A1"> <input name="names" value="Aaa"></label>
+        </div>
+        <div>
+            <label>Country 2: <input name="ids" value="B1"> <input name="names" value="Bbb"></label>
+        </div>
+        <div>
+            <label>Country 3: <input name="ids" value="C1"> <input name="names" value="Ccc"></label>
+        </div>
+
+        <button>OK</button>
+    </form>
+</body>
+</html>
