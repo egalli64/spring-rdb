@@ -1,0 +1,89 @@
+<!--
+    Introduction to Spring - Relational DB
+
+    https://github.com/egalli64/spring-rdb
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring and Relational DBMS</title>
+<link rel="icon" href="data:;base64,=">
+<link rel="stylesheet" type="text/css" href="/css/simple.css">
+</head>
+<body>
+    <h1>Spring and Relational DBMS</h1>
+
+    <h2>1. Spring JDBC API</h2>
+
+    <h3>Repository and JdbcTemplate</h3>
+    <ul>
+        <li><a href="/m1/s3/create-region.html">Create a new region</a></li>
+        <li><a href="/m1/s3/rename-region.html">Change name to a region</a></li>
+    </ul>
+
+    <h3>Repository and JdbcClient</h3>
+    <ul>
+        <li><a href="/m1/s4/read?id=1">Read region 1</a> (Europe)</li>
+        <li><a href="/m1/s4/read?id=42">Read region 42</a> (Probably missing)</li>
+        <li><a href="/m1/s4/create-region.html">Create a new region</a></li>
+        <li><a href="/m1/s4/rename-region.html">Change name to a region</a></li>
+    </ul>
+
+    <h2>2. Spring Data JPA</h2>
+
+    <h3>Methods from CRUD Repository</h3>
+    <ul>
+        <li><a href="/m2/s4/create.html">Create a new region</a> - save() w/o ID</li>
+        <li><a href="/m2/s4/rename.html">Change name to a region</a> - save() with ID</li>
+        <li><a href="/m2/s4/check.html">Does a region exist?</a> - existsById()</li>
+        <li><a href="/m2/s4/all">All regions</a> - findAll()</li>
+        <li><a href="/m2/s4/some?ids=1&ids=3">Regions 1, 3</a> - findAllById()</li>
+        <li><a href="/m2/s4/count">Count regions</a> - count()</li>
+        <li><a href="/m2/s4/delete.html">Delete a region</a> - deleteById()</li>
+        <li><a href="/m2/s4/find-delete.html">Find a region, then delete it</a> - findById(), delete()</li>
+        <li><a href="/m2/s4/delete-some.html">Find regions, then delete them</a> - findById(), deleteAll()</li>
+        <li><a href="/m2/s4/delete-all">Delete all region</a> - deleteAll() (it won't - data integrity violation)</li>
+    </ul>
+
+    <h3>Repository query methods - code deduced by method name</h3>
+    <ul>
+        <li><a href="/m2/s5/by-firstname?name=Diana">First name Diana</a></li>
+        <li><a href="/m2/s5/firstname-starting?prefix=D">First name starting by D</a></li>
+        <li><a href="/m2/s5/firstname-starting-lastname-containing?first=D&last=i">First name starting by D or
+                an i/I in the last name</a></li>
+    </ul>
+
+    <h3>Repository method with Query annotation</h3>
+    <ul>
+        <li><a href="/m2/s6/by-salary-range?low=4000&high=5000">Salary range</a></li>
+        <li><a href="/m2/s6/by-salary-range-names?low=4000&high=5000">Salary range</a> (by names)</li>
+        <li><a href="/m2/s6/with-prefix?prefix=D">First name starting by D</a></li>
+        <li><a href="/m2/s6/with-infix?infix=i">First name containing "i"</a></li>
+        <li><a href="/m2/s6/by-salary-range-native?low=4000&high=5000">Salary range</a> (native)</li>
+    </ul>
+
+    <h2>3. Spring Transactions</h2>
+
+    <h3>Using an implicitly transactional repository</h3>
+    <ul>
+        <li><a href="/m3/s2/get-region?id=1">Get a region</a> - it should succeed</li>
+        <li><a href="/m3/s2/get-region?id=42">Get a region</a> - it should fail</li>
+        <li><a href="/m3/s2/all-regions">Get all regions</a></li>
+        <li><a href="/m3/s2/create.html">Create a new region</a></li>
+    </ul>
+
+    <h3>Using an explicitly transactional repository</h3>
+    <ul>
+        <li><a href="/m3/s3/region?id=1">Get a region</a> - and associated countries</li>
+        <li><a href="/m3/s3/regions">Get all regions</a> - and associated countries</li>
+        <li><a href="/m3/s3/add-countries.html">Add countries</a> - to an existing region</li>
+    </ul>
+
+    <h3>Transactions and services</h3>
+    <ul>
+        <li><a href="/m3/s4/create-region.html">Create region</a> - and associated countries</li>
+    </ul>
+
+</body>
+</html>
