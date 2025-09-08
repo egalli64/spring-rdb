@@ -1,9 +1,14 @@
-package com.example.swd.m3.s4;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m3.s4;
 
 import org.springframework.stereotype.Service;
 
-import com.example.swd.m2.entity.Country;
-import com.example.swd.m2.entity.Region;
+import com.example.srd.m2.entity.Country;
+import com.example.srd.m2.entity.Region;
 
 @Service
 public class RegionService {

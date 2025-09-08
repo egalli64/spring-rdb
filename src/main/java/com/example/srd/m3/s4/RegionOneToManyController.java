@@ -1,4 +1,9 @@
-package com.example.swd.m3.s4;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m3.s4;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.swd.m1.s3.JdbcRegionController;
-import com.example.swd.m2.entity.Region;
+import com.example.srd.m1.s3.JdbcRegionController;
+import com.example.srd.m2.entity.Region;
 
 @RestController
 @RequestMapping("/api/regions")
 public class RegionOneToManyController {
     private static final Logger log = LogManager.getLogger(JdbcRegionController.class);
 
-    private final RegionService regionService;
+    private final RegionService svc;
 
-    public RegionOneToManyController(RegionService regionService) {
-        this.regionService = regionService;
+    public RegionOneToManyController(RegionService svc) {
+        this.svc = svc;
     }
 
     /**
@@ -34,7 +39,7 @@ public class RegionOneToManyController {
         log.traceEntry("getRegionWithCountries({})", name);
 
         try {
-            Region region = regionService.getRegionWithCountries(name);
+            Region region = svc.getRegionWithCountries(name);
             return ResponseEntity.ok(region);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
@@ -49,7 +54,7 @@ public class RegionOneToManyController {
     @PostMapping
     public ResponseEntity<Region> createRegionWithCountries(@RequestBody Region region) {
         try {
-            Region result = regionService.createRegionWithCountries(region);
+            Region result = svc.createRegionWithCountries(region);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();

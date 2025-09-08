@@ -1,4 +1,9 @@
-package com.example.swd.m3.s4;
+/**
+ * Introduction to Spring - Relational DB
+ * 
+ * https://github.com/egalli64/spring-rdb
+ */
+package com.example.srd.m3.s4;
 
 import java.util.List;
 
@@ -10,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.swd.m2.entity.Country;
-import com.example.swd.m2.entity.Region;
+import com.example.srd.m2.entity.Country;
+import com.example.srd.m2.entity.Region;
 
 @RestController
 @RequestMapping("/geo")
-public class GeoController {
+public class GeoRestController {
 
-    private final GeoService geoService;
+    private final GeoService svc;
 
-    public GeoController(GeoService geoService) {
-        this.geoService = geoService;
+    public GeoRestController(GeoService svc) {
+        this.svc = svc;
     }
 
     /**
@@ -34,7 +39,7 @@ public class GeoController {
     public ResponseEntity<Region> createRegionWithCountries( //
             @PathVariable String regionName, @RequestBody List<Country> countries) {
         try {
-            Region createdRegion = geoService.createRegionWithCountries(regionName, countries);
+            Region createdRegion = svc.createRegionWithCountries(regionName, countries);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdRegion);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
