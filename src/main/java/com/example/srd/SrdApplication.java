@@ -25,6 +25,6 @@ public class SrdApplication {
     @Bean
     protected CommandLineRunner demo(CrudRegionRepository repository) {
         log.trace("Generating a bean that logs all regions (auto-executed at startup)");
-        return args -> repository.findAll().forEach(region -> log.info(region.toString()));
+        return _ -> repository.findAll().forEach(region -> log.info(region.toString()));
     }
 }
