@@ -1,0 +1,59 @@
+<!--
+    Introduction to Spring - Relational DB
+
+    https://github.com/egalli64/spring-rdb
+ -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="data:;base64,=">
+<link rel="stylesheet" type="text/css" th:href="@{/css/simple.css}">
+<title>Phone Book</title>
+</head>
+<body>
+    <h1>A Very Simple Phone Book</h1>
+    <!--
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-6">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <c:forEach var="contact" items="${contacts}">
+                    <tr>
+                        <td>${contact.name}</td>
+                        <td>${contact.phone}</td>
+                        <td><a href="/phob/delete?id=${contact.id}" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3 border border-info p-2">
+            <h2 class="text-center">New Contact</h2>
+            <form action="/phob/create">
+                <div>
+                    <label>Name <input name="name" class="form-control" required>
+                    </label>
+                </div>
+                <div>
+                    <label>Phone <input name="phone" class="form-control" required>
+                    </label>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+ -->
+</body>
+</html>
